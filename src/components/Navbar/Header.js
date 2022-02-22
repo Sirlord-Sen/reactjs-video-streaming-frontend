@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const style = {
     position: 'absolute',
@@ -56,6 +57,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar({isLoggedIn}) {
+    
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -65,6 +67,7 @@ export default function SearchAppBar({isLoggedIn}) {
 
 
     const submitForm = async (e) => {
+        // const navigate = useNavigate()
         e.preventDefault();
         const formData = new FormData();
         formData.append("title", title);
@@ -76,6 +79,8 @@ export default function SearchAppBar({isLoggedIn}) {
                 Authorization: 'Bearer ' + token
             })
         })
+        // navigate('/video')
+
     }
     return (
         <Box sx={{ flexGrow: 1 }}>
